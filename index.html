@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>КАПСУЛА — Салон по наращиванию волос в Тюмени</title>
+    <meta name="description" content="Салон красоты КАПСУЛА в Тюмени. Наращивание волос, кератиновое выпрямление, сложное окрашивание, ботокс и нанопластика волос. Улица Михаила Сперанского, 43.">
+    
+    <!-- шрифты -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --milky: #F7F3EE;
+            --white: #FFFFFF;
+            --soft-pink: #F2D7D9;
+            --pink-accent: #D98C96;
+            --dark-text: #3E3234;
+            --shadow: 0 8px 30px rgba(62, 50, 52, 0.06);
+            --radius: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: var(--milky);
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .logo {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 15px rgba(62, 50, 52, 0.04);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--dark-text);
+        }
+
+        nav {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--pink-accent);
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 0.8rem;
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 0.6rem 0;
+            min-width: 240px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            list-style: none;
+            border: 1px solid var(--soft-pink);
+        }
+
+        .dropdown:hover .dropdown-menu, 
+        .dropdown.active .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li a {
+            display: block;
+            padding: 0.8rem 1.5rem;
+            font-size: 0.9rem;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .dropdown-menu li a:hover {
+            background: var(--soft-pink);
+            color: var(--dark-text);
+        }
+
+        /* главная */
+        .hero {
+            padding: 140px 5% 100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4rem;
+            min-height: 90vh;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 550px;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            line-height: 1.15;
+            margin-bottom: 1.2rem;
+            color: var(--dark-text);
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            opacity: 0.85;
+            margin-bottom: 2.5rem;
+            max-width: 520px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--pink-accent);
+            color: var(--white);
+            padding: 1rem 2.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #c97b85;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(217, 140, 150, 0.35);
+        }
+
+        .no-break {
+            white-space: nowrap;
+        }
+
+        .hero-image {
+            flex: 1;
+            max-width: 500px;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            object-fit: cover;
+            aspect-ratio: 4/5;
+        }
+
+        /* услуги */
+        .services {
+            padding: 100px 5%;
+            background: var(--white);
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 3.5rem;
+            color: var(--dark-text);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .services-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .services-list li {
+            background: var(--milky);
+            padding: 1.4rem 2rem;
+            border-radius: var(--radius);
+            font-size: 1.05rem;
+            font-weight: 500;
+            transition: transform 0.3s ease, background 0.3s ease;
+            border-left: 4px solid var(--soft-pink);
+        }
+
+        .services-list li:hover {
+            transform: translateX(8px);
+            background: var(--soft-pink);
+        }
+
+        .services-image img {
+            width: 100%;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            object-fit: cover;
+            aspect-ratio: 1/1;
+        }
+
+        /* контакты */
+        .contacts {
+            padding: 100px 5%;
+            background: var(--milky);
+            text-align: center;
+        }
+
+        .contacts-content {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .contact-item {
+            margin-bottom: 2.2rem;
+        }
+
+        .contact-item h3 {
+            font-family: 'Manrope', sans-serif;
+            font-size: 1.1rem;
+            color: var(--pink-accent);
+            margin-bottom: 0.6rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .contact-item p, .contact-item a {
+            font-size: 1.15rem;
+            color: var(--dark-text);
+            line-height: 1.7;
+        }
+
+        .contact-item a:hover {
+            color: var(--pink-accent);
+        }
+
+        .contact-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2.5rem;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.9rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            color: var(--white);
+        }
+
+        .btn-whatsapp { background: #25D366; }
+        .btn-telegram { background: #0088cc; }
+        .btn-2gis { background: var(--dark-text); }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+            filter: brightness(1.1);
+        }
+
+        /* футер */
+        footer {
+            padding: 2rem 5%;
+            background: var(--white);
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--dark-text);
+            opacity: 0.6;
+            border-top: 1px solid var(--soft-pink);
+        }
+
+        /* анимки при скролле */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* адаптивность */
+        @media (max-width: 900px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 120px;
+                gap: 3rem;
+                min-height: auto;
+            }
+
+            .hero-content {
+                max-width: 100%;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+                font-size: 1.15rem;
+                opacity: 0.85;
+                margin-bottom: 2.5rem;
+                max-width: 46ch;
+                text-wrap: pretty;
+            }
+
+            .hero-image {
+                max-width: 400px;
+                width: 100%;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .services-image {
+                order: -1;
+                max-width: 450px;
+                margin: 0 auto;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            nav {
+                gap: 1.2rem;
+            }
+
+            .nav-link {
+                font-size: 0.85rem;
+            }
+
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .dropdown-menu {
+                right: -10px;
+                min-width: 200px;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-btn {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- шапка -->
+    <header>
+        <div class="logo">КАПСУЛА</div>
+        <nav>
+            <div class="dropdown">
+                <span class="nav-link">Наши услуги</span>
+                <ul class="dropdown-menu">
+                    <li><a href="#services">Наращивание волос</a></li>
+                    <li><a href="#services">Кератиновое выпрямление</a></li>
+                    <li><a href="#services">Сложное окрашивание</a></li>
+                    <li><a href="#services">Ботокс волос</a></li>
+                    <li><a href="#services">Нанопластика волос</a></li>
+                </ul>
+            </div>
+            <a href="#contacts" class="nav-link">Контакты</a>
+        </nav>
+    </header>
+
+    <!-- главная -->
+    <section class="hero">
+        <div class="hero-content reveal">
+            <h1>Салон по наращиванию волос КАПСУЛА</h1>
+            <p>Наращивание волос, уход и окрашивание <span style="white-space: nowrap;">в&nbsp;Тюмени.</span> Подчеркнём вашу естественную красоту с заботой и вниманием к деталям.</p>
+            <a href="#contacts" class="btn">Связаться с нами</a>
+        </div>
+    </section>
+
+    <!-- услуги -->
+    <section id="services" class="services">
+        <h2 class="section-title reveal">Наши услуги</h2>
+        <div class="services-grid">
+            <ul class="services-list reveal">
+                <li>Наращивание волос</li>
+                <li>Кератиновое выпрямление</li>
+                <li>Сложное окрашивание</li>
+                <li>Ботокс волос</li>
+                <li>Нанопластика волос</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- контакты -->
+    <section id="contacts" class="contacts">
+        <div class="contacts-content reveal">
+            <h2 class="section-title">Контакты</h2>
+            
+            <div class="contact-item">
+                <h3>Адрес</h3>
+                <p>Улица Михаила Сперанского, 43, 1 этаж<br>Видный м-н, Восточный округ, Тюмень, 625033</p>
+            </div>
+
+            <div class="contact-item">
+                <h3>Режим работы</h3>
+                <p>Ежедневно с 09:00 до 19:00<br>По предварительной записи</p>
+            </div>
+
+            <div class="contact-item">
+                <h3>Телефон</h3>
+                <a href="tel:+79088650083">+7 908 865-00-83</a>
+            </div>
+
+            <div class="contact-buttons">
+                <a href="https://wa.me/79088650083?text=Здравствуйте!%20Пишу%20из%20предложений%202%20ГИС." target="_blank" class="contact-btn btn-whatsapp">WhatsApp</a>
+                <a href="https://t.me/+79088650083" target="_blank" class="contact-btn btn-telegram">Telegram</a>
+                <a href="https://2gis.ru/tyumen/inside/70030076199820051/firm/70000001047930726" target="_blank" class="contact-btn btn-2gis">Открыть в 2ГИС</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- футер -->
+    <footer>
+        Демо-сайт
+    </footer>
+
+    <script>
+        // управление выпадающим меню на мобилках
+        document.addEventListener('DOMContentLoaded', () => {
+            const dropdown = document.querySelector('.dropdown');
+            const dropdownToggle = dropdown.querySelector('.nav-link');
+            
+            dropdownToggle.addEventListener('click', (e) => {
+                if (window.innerWidth <= 600) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
+                }
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!dropdown.contains(e.target)) {
+                    dropdown.classList.remove('active');
+                }
+            });
+
+            // плавная анимка появления элементов при скролле
+            const observerOptions = {
+                threshold: 0.15,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
